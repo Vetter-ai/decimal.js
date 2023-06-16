@@ -4369,6 +4369,10 @@
 
         return parseDecimal(x, v.toString());
 
+      } else if (t == 'bigint') {
+        
+        return parseDecimal(x, v.toString());
+
       } else if (t !== 'string') {
         throw Error(invalidArgument + v);
       }
