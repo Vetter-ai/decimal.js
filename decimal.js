@@ -4371,6 +4371,27 @@
 
       } else if (t == 'bigint') {
         
+        if (v === 0n) {
+          x.s = 1 / v < 0n ? -1 : 1;
+          x.e = 0;
+          x.d = [0];
+          return;
+        }
+
+        if (v < 0n) {
+          v = -v;
+          x.s = -1;
+        } else {
+          x.s = 1;
+        }
+
+        if (v * 0n !== 0n) {
+          if (!v) x.s = NaN;
+          x.e = NaN;
+          x.d = null;
+          return;
+        }
+
         return parseDecimal(x, v.toString());
 
       } else if (t !== 'string') {
