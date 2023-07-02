@@ -4370,12 +4370,14 @@
         return parseDecimal(x, v.toString());
 
       } else if (t == 'bigint') {
-        
+
         if (v === 0n) {
-          x.s = 1 / v < 0n ? -1 : 1;
+
+          x.s = 1; // sign is always positive for BigInt of 0 (whether negative or not)
           x.e = 0;
           x.d = [0];
           return;
+
         }
 
         if (v < 0n) {
